@@ -1,4 +1,3 @@
-// src/screens/LoginScreen.tsx
 import React, { useState } from 'react';
 import {
   View,
@@ -47,7 +46,6 @@ export default function LoginScreen({ navigation }: Props) {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <View style={styles.container}>
-        {/* topo colorido */}
         <View style={styles.hero}>
           <Text style={styles.appName}>SkillUpPlus</Text>
           <Text style={styles.appNameAccent}>2030+</Text>
@@ -56,7 +54,6 @@ export default function LoginScreen({ navigation }: Props) {
           </Text>
         </View>
 
-        {/* card de login */}
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Entrar</Text>
           <Text style={styles.cardSubtitle}>

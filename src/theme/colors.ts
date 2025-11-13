@@ -1,5 +1,5 @@
 export const colors = {
-  primary: '#0891b2',      // azul jade/teal
+  primary: '#0891b2',      
   primaryDark: '#0f766e',
   primaryLight: '#22d3ee',
   background: '#f1f5f9',

@@ -1,4 +1,3 @@
-// src/screens/ProfileScreen.tsx
 import React, { useEffect, useState } from 'react';
 import {View, Text, TextInput, StyleSheet, ScrollView, TouchableOpacity, Alert} from 'react-native';
 import { auth, db } from '../services/firebase';
@@ -27,7 +26,7 @@ export default function ProfileScreen() {
       console.log("Erro ao sair:", error);
     }
   }
-  // carrega dados salvos
+
   useEffect(() => {
     async function load() {
       if (!user) return;

@@ -1,4 +1,3 @@
-// src/screens/AssessmentScreen.tsx
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, ScrollView, Alert } from 'react-native';
 import { ref, set } from 'firebase/database';

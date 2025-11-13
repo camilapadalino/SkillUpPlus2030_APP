@@ -1,4 +1,3 @@
-// src/services/ai.ts
 import { auth, db } from './firebase';
 import { ref, set, push } from 'firebase/database';
 import { AI_API_KEY, AI_ENDPOINT } from '@env';
@@ -6,7 +5,7 @@ import { AI_API_KEY, AI_ENDPOINT } from '@env';
 type Profile = { interest: string; skills: string[]; goals: string[] };
 type RecItem = { title: string; description: string; areas?: string[] };
 
-// 🔁 fallback local simples (retorna trilhas baseadas no interesse)
+// fallback
 function localFallback(profile: Profile): RecItem[] {
   const i = (profile.interest || '').toLowerCase();
   if (i.includes('ia')) {
@@ -90,7 +89,6 @@ export async function recommendTracksWithChatGPT(profile: Profile) {
     output = localFallback(profile);
   }
 
-  // 💾 salva histórico (inclusive quando é fallback)
   const uid = auth.currentUser?.uid;
   if (uid) {
     const recRef = push(ref(db, `users/${uid}/recommendations`));
@@ -99,7 +97,7 @@ export async function recommendTracksWithChatGPT(profile: Profile) {
       input: profile,
       output,
       source,                  // 'openai' ou 'fallback'
-      error: errorMsg || null, // útil p/ auditoria
+      error: errorMsg || null,
     });
   }
 

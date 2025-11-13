@@ -1,4 +1,3 @@
-// src/services/firebase.ts
 import { initializeApp } from 'firebase/app';
 import { initializeAuth } from 'firebase/auth';
 import { getDatabase } from 'firebase/database';
@@ -14,7 +13,7 @@ import {
   FIREBASE_APP_ID,
 } from '@env';
 
-// ⚙️ config
+
 const firebaseConfig = {
   apiKey: FIREBASE_API_KEY || 'AIzaSyDUFnhvk6RVWlps7KuyfQ259bnS-C88bmE',
   authDomain: FIREBASE_AUTH_DOMAIN || 'mobile-globalsolution2.firebaseapp.com',
@@ -29,14 +28,12 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-// ⚠️ Tipagem do pacote não expõe getReactNativePersistence em alguns setups.
-// Usamos require para evitar o erro do TS, mas em runtime a função existe.
 const { getReactNativePersistence } = require('firebase/auth');
 
-// 🔐 Auth com persistência no AsyncStorage
+
 export const auth = initializeAuth(app, {
   persistence: getReactNativePersistence(AsyncStorage),
 });
 
-// 💾 Realtime Database
+
 export const db = getDatabase(app);

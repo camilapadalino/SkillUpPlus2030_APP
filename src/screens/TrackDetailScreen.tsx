@@ -1,4 +1,3 @@
-// src/screens/TrackDetailScreen.tsx
 import React, { useEffect, useMemo, useState } from 'react';
 import { View, Text, Button, StyleSheet, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import { ref, onValue, set, update } from 'firebase/database';
