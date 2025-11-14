@@ -1,4 +1,3 @@
-// src/screens/TracksScreen.tsx
 import React, { useEffect, useState, useMemo } from 'react';
 import {
   View,
@@ -56,7 +55,7 @@ export default function TracksScreen() {
           arr.sort((a, b) => {
             const ta = new Date(a.timestamp || 0).getTime();
             const tb = new Date(b.timestamp || 0).getTime();
-            return tb - ta; // mais recente primeiro
+            return tb - ta; 
           });
 
           setLastRec(arr[0]);
@@ -93,7 +92,7 @@ export default function TracksScreen() {
     return [];
   }, [lastRec]);
 
-  // usuário não logado (só por segurança)
+  
   if (!auth.currentUser) {
     return (
       <View style={styles.center}>
@@ -105,7 +104,7 @@ export default function TracksScreen() {
     );
   }
 
-  // carregando
+  
   if (loading) {
     return (
       <View style={styles.center}>
@@ -117,7 +116,7 @@ export default function TracksScreen() {
     );
   }
 
-  // sem recomendações
+
   if (!lastRec || tracks.length === 0) {
     return (
       <View style={styles.center}>

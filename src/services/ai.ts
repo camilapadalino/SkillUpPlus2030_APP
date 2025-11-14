@@ -5,7 +5,7 @@ import { AI_API_KEY, AI_ENDPOINT } from '@env';
 type Profile = { interest: string; skills: string[]; goals: string[] };
 type RecItem = { title: string; description: string; areas?: string[] };
 
-// fallback
+
 function localFallback(profile: Profile): RecItem[] {
   const i = (profile.interest || '').toLowerCase();
   if (i.includes('ia')) {
@@ -30,7 +30,7 @@ function localFallback(profile: Profile): RecItem[] {
 }
 
 export async function recommendTracksWithChatGPT(profile: Profile) {
-  // tenta IA; se falhar, usa fallback
+  // Tenta IA. Se falhar, usa fallback.
   let output: any;
   let source: 'openai' | 'fallback' = 'openai';
   let errorMsg: string | undefined;
@@ -68,7 +68,7 @@ export async function recommendTracksWithChatGPT(profile: Profile) {
     );
 
     const data = await res.json();
-    console.log('🧠 OpenAI raw:', JSON.stringify(data, null, 2));
+    console.log('OpenAI raw:', JSON.stringify(data, null, 2));
 
     if (!res.ok) {
       throw new Error(data?.error?.message || `HTTP ${res.status}`);
@@ -85,7 +85,7 @@ export async function recommendTracksWithChatGPT(profile: Profile) {
   } catch (e: any) {
     source = 'fallback';
     errorMsg = String(e?.message || e);
-    console.warn('⚠️ IA indisponível, usando fallback:', errorMsg);
+    console.warn('IA indisponível, usando fallback:', errorMsg);
     output = localFallback(profile);
   }
 
@@ -96,7 +96,7 @@ export async function recommendTracksWithChatGPT(profile: Profile) {
       timestamp: new Date().toISOString(),
       input: profile,
       output,
-      source,                  // 'openai' ou 'fallback'
+      source,                  // "openai" ou "fallback".
       error: errorMsg || null,
     });
   }

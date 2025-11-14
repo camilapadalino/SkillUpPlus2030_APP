@@ -10,15 +10,15 @@ type Track = { id: string; title: string; description?: string; lessons?: Record
 export default function TrackDetailScreen({ route }: any) {
   const { id } = route.params as { id: string };
   const [track, setTrack] = useState<Track | null>(null);
-  const [done, setDone] = useState<Record<string, boolean>>({}); // aulas concluídas do usuário
+  const [done, setDone] = useState<Record<string, boolean>>({}); 
 
-  // carrega dados da trilha
+
   useEffect(() => {
     const r = ref(db, `tracks/${id}`);
     return onValue(r, snap => setTrack(snap.val()));
   }, [id]);
 
-  // carrega progresso do usuário nessa trilha
+
   useEffect(() => {
     const uid = auth.currentUser?.uid;
     if (!uid) return;
@@ -36,7 +36,7 @@ export default function TrackDetailScreen({ route }: any) {
   const startCourse = async () => {
     const uid = auth.currentUser?.uid;
     if (!uid) return Alert.alert('Faça login para iniciar.');
-    // cria um resumo inicial
+
     await set(ref(db, `users/${uid}/progressSummary/${id}`), 0);
     Alert.alert('Trilha iniciada', 'Bom estudo!');
   };
@@ -45,9 +45,9 @@ export default function TrackDetailScreen({ route }: any) {
     const uid = auth.currentUser?.uid;
     if (!uid) return Alert.alert('Faça login para registrar progresso.');
     const next = !done?.[lessonId];
-    // marca/desmarca a aula
+    
     await update(ref(db, `users/${uid}/progress/${id}`), { [lessonId]: next });
-    // atualiza o resumo
+    
     const total = lessons.length || 1;
     const completed = lessons.filter(([lid]) => (lid === lessonId ? next : done?.[lid])).length;
     await set(ref(db, `users/${uid}/progressSummary/${id}`), completed / total);
