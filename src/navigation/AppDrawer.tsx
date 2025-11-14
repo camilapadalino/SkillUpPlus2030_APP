@@ -23,7 +23,7 @@ export default function AppDrawer() {
       }}
     >
       <Drawer.Screen
-        name="Home"
+        name="HomeTab"
         component={AppTabs}
         options={{ title: 'Home' }}
       />

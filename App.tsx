@@ -22,7 +22,6 @@ export default function App() {
 
   if (loading) return null;
 
-  // 🔹 Aplica o tema do React Navigation
   const navTheme = {
     ...DefaultTheme,
     colors: {

@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
     padding: 16,
     paddingBottom: 32,
     backgroundColor: '#f3f4f6',
+    justifyContent: 'space-between'
   },
   heading: {
     fontSize: 22,
@@ -103,6 +104,7 @@ const styles = StyleSheet.create({
     color: '#4b5563',
     marginBottom: 16,
     lineHeight: 20,
+    justifyContent: 'space-around'
   },
   card: {
     backgroundColor: '#ffffff',

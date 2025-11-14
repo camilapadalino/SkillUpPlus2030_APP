@@ -3,6 +3,7 @@ import { View, Text, TextInput, Button, StyleSheet, ScrollView, Alert } from 're
 import { ref, set } from 'firebase/database';
 import { auth, db } from '../services/firebase';
 import { recommendTracksWithChatGPT } from '../services/ai';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function AssessmentScreen() {
   const [interest, setInterest] = useState('');
@@ -71,7 +72,14 @@ export default function AssessmentScreen() {
         onChangeText={setGoals}
       />
 
-      <Button title={loading ? 'Gerando...' : 'Gerar recomendações'} onPress={handleSubmit} disabled={loading} />
+      <TouchableOpacity
+        style={[styles.button, loading && { opacity: 0.6 }]}
+        onPress={handleSubmit}
+        disabled={loading}>
+      <Text style={styles.buttonText}>
+        {loading ? 'Gerando...' : 'Gerar Recomendações'}
+      </Text>
+      </TouchableOpacity>
 
       {recommendations && (
         <View style={{ marginTop: 20 }}>
@@ -92,12 +100,60 @@ export default function AssessmentScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { padding: 20 },
-  title: { fontSize: 22, fontWeight: '700', marginBottom: 12 },
-  label: { marginTop: 12, fontWeight: '600' },
-  input: { borderWidth: 1, borderColor: '#ccc', padding: 8, borderRadius: 8, marginTop: 6 },
-  subtitle: { fontSize: 18, fontWeight: '600', marginBottom: 8 },
-  card: { backgroundColor: '#f9f9f9', padding: 12, borderRadius: 8, marginBottom: 8 },
-  cardTitle: { fontWeight: '700' },
-  cardText: { color: '#444', marginTop: 4 },
+  container: { 
+    padding: 20 
+  },
+  title: { 
+    fontSize: 22, 
+    fontWeight: '700', 
+    marginBottom: 12 
+  },
+  label: { 
+    marginTop: 12, 
+    fontWeight: '600' 
+  },
+  input: { 
+    borderWidth: 1, 
+    borderColor: '#ccc', 
+    padding: 8, 
+    borderRadius: 8, 
+    marginTop: 6, 
+  },
+  subtitle: { 
+    fontSize: 18, 
+    marginBottom: 8 
+  },
+  card: { 
+    backgroundColor: '#f9f9f9', 
+    padding: 12, 
+    borderRadius: 8, 
+    marginBottom: 8 
+  },
+  cardTitle: { 
+    fontWeight: '700',
+  },
+  cardText: { 
+    color: '#444', 
+    marginTop: 4, 
+    marginBottom: 18 
+  },
+  button: {
+    backgroundColor: '#0396A6',
+    paddingVertical: 14,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginTop: 16,
+    shadowColor: '#000',
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 3,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '700',
+    letterSpacing: 0.5,
+    textTransform: 'uppercase',
+  },
 });
