@@ -1,4 +1,4 @@
-# 🌟 SkillUpPlus 2030+ — Guia de Desenvolvimento, Aprendizagem e ODS
+# 🌟 SkillUpPlus 2030+ - Aplicativo Guia de Desenvolvimento, Aprendizagem e ODS
 ## 👨‍💻 Alunos
 - Camila do Prado Padalino - RM98316
 - Gabriel Teixeira Machado - RM551570
