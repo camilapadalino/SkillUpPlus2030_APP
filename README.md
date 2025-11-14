@@ -7,6 +7,7 @@
 ---
 
 ## 📘 Sobre o Projeto
+> Link para documentação: https://docs.google.com/document/d/1wPWWw0M0KiYYvtMa3fd36LYtxFckCZp2oNicbFh_c4A/edit?usp=sharing
 
 O SkillUpPlus 2030+ é um aplicativo mobile desenvolvido com React Native + Expo, que utiliza Inteligência Artificial, Firebase e conceitos da Agenda 2030 da ONU para orientar pessoas em suas jornadas de aprendizagem e desenvolvimento profissional.
 
